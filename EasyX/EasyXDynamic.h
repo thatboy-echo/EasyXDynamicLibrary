@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include <windows.h>
 #include <tchar.h>
@@ -27,7 +27,7 @@
 #define EW_NOMINIMIZE		4		// Disable the minimize button
 #define EW_DBLCLKS			8		// Support double-click events
 
-// ÑÕÉ«
+// é¢œè‰²
 #define	BLACK			0
 #define	BLUE			0xAA0000
 #define	GREEN			0x00AA00
@@ -45,18 +45,18 @@
 #define	YELLOW			0x55FFFF
 #define	WHITE			0xFFFFFF
 
-// ¶¨ÒåÑÕÉ«×ª»»ºê
+// å®šä¹‰é¢œè‰²è½¬æ¢å®
 #define BGR(color)	( (((color) & 0xFF) << 16) | ((color) & 0xFF00FF00) | (((color) & 0xFF0000) >> 16) )
 
 class EASYX_API IMAGE;
 
-// ¶¨ÒåÏßµÄÑùÊ½
+// å®šä¹‰çº¿çš„æ ·å¼
 class EASYX_API LINESTYLE
 {
 public:
 	LINESTYLE();
 	LINESTYLE(const ::LINESTYLE& style);
-	LINESTYLE& operator = (const LINESTYLE& style);			// ¸³ÖµÔËËã·ûÖØÔØº¯Êı
+	LINESTYLE& operator = (const LINESTYLE& style);			// èµ‹å€¼è¿ç®—ç¬¦é‡è½½å‡½æ•°
 	virtual ~LINESTYLE();
 
 	DWORD	style;
@@ -70,81 +70,81 @@ class EASYX_API FILLSTYLE
 public:
 	FILLSTYLE();
 	FILLSTYLE(const FILLSTYLE& style);
-	FILLSTYLE& operator = (const FILLSTYLE& style);			// ¸³ÖµÔËËã·ûÖØÔØº¯Êı
+	FILLSTYLE& operator = (const FILLSTYLE& style);			// èµ‹å€¼è¿ç®—ç¬¦é‡è½½å‡½æ•°
 	virtual ~FILLSTYLE();
 
-	int			style;			// Ìî³äĞÎÊ½
-	long		hatch;			// Ìî³äÍ¼°¸ÑùÊ½
-	IMAGE* ppattern;		// Ìî³äÍ¼Ïñ
+	int			style;			// å¡«å……å½¢å¼
+	long		hatch;			// å¡«å……å›¾æ¡ˆæ ·å¼
+	IMAGE* ppattern;		// å¡«å……å›¾åƒ
 };
 
-// ¶¨ÒåÍ¼Ïñ¶ÔÏó
+// å®šä¹‰å›¾åƒå¯¹è±¡
 class EASYX_API IMAGE
 {
 public:
-	int getwidth() const;	// »ñÈ¡¶ÔÏóµÄ¿í¶È
-	int getheight() const;	// »ñÈ¡¶ÔÏóµÄ¸ß¶È
+	int getwidth() const;	// è·å–å¯¹è±¡çš„å®½åº¦
+	int getheight() const;	// è·å–å¯¹è±¡çš„é«˜åº¦
 
 private:
-	int width, height;		// ¶ÔÏóµÄ¿í¸ß
+	int width, height;		// å¯¹è±¡çš„å®½é«˜
 	HBITMAP m_hBmp;
 	HDC m_hMemDC;
-	int m_MemCurX;			// µ±Ç°µãX×ø±ê
-	int m_MemCurY;			// µ±Ç°µãY×ø±ê
+	int m_MemCurX;			// å½“å‰ç‚¹Xåæ ‡
+	int m_MemCurY;			// å½“å‰ç‚¹Yåæ ‡
 	float m_data[6];
-	COLORREF	m_LineColor;		// µ±Ç°ÏßÌõÑÕÉ«
-	COLORREF	m_FillColor;		// µ±Ç°Ìî³äÑÕÉ«
-	COLORREF	m_TextColor;		// µ±Ç°ÎÄ×ÖÑÕÉ«
-	COLORREF	m_BkColor;			// µ±Ç°±³¾°ÑÕÉ«
-	DWORD* m_pBuffer;			// »æÍ¼ÇøµÄÄÚ´æ
+	COLORREF	m_LineColor;		// å½“å‰çº¿æ¡é¢œè‰²
+	COLORREF	m_FillColor;		// å½“å‰å¡«å……é¢œè‰²
+	COLORREF	m_TextColor;		// å½“å‰æ–‡å­—é¢œè‰²
+	COLORREF	m_BkColor;			// å½“å‰èƒŒæ™¯é¢œè‰²
+	DWORD* m_pBuffer;			// ç»˜å›¾åŒºçš„å†…å­˜
 
-	LINESTYLE	m_LineStyle;		// »­ÏßÑùÊ½
-	FILLSTYLE	m_FillStyle;		// Ìî³äÑùÊ½
+	LINESTYLE	m_LineStyle;		// ç”»çº¿æ ·å¼
+	FILLSTYLE	m_FillStyle;		// å¡«å……æ ·å¼
 
-	virtual void SetDefault();						// ÉèÖÃÎªÄ¬ÈÏ×´Ì¬
+	virtual void SetDefault();						// è®¾ç½®ä¸ºé»˜è®¤çŠ¶æ€
 
 public:
-	IMAGE(int _width = 0, int _height = 0);			// ´´½¨Í¼Ïñ
-	IMAGE(const IMAGE& img);						// ¿½±´¹¹Ôìº¯Êı
-	IMAGE& operator = (const IMAGE& img);			// ¸³ÖµÔËËã·ûÖØÔØº¯Êı
+	IMAGE(int _width = 0, int _height = 0);			// åˆ›å»ºå›¾åƒ
+	IMAGE(const IMAGE& img);						// æ‹·è´æ„é€ å‡½æ•°
+	IMAGE& operator = (const IMAGE& img);			// èµ‹å€¼è¿ç®—ç¬¦é‡è½½å‡½æ•°
 	virtual ~IMAGE();
-	virtual void Resize(int _width, int _height);	// µ÷Õû³ß´ç
+	virtual void Resize(int _width, int _height);	// è°ƒæ•´å°ºå¯¸
 };
 
-// Êó±êÏûÏ¢
-// Ö§³ÖÈçÏÂÏûÏ¢£º
-//		WM_MOUSEMOVE		Êó±êÒÆ¶¯
-//		WM_MOUSEWHEEL		Êó±ê¹öÂÖ²¦¶¯
-//		WM_LBUTTONDOWN		×ó¼ü°´ÏÂ
-//		WM_LBUTTONUP		×ó¼üµ¯Æğ
-//		WM_LBUTTONDBLCLK	×ó¼üË«»÷
-//		WM_MBUTTONDOWN		ÖĞ¼ü°´ÏÂ
-//		WM_MBUTTONUP		ÖĞ¼üµ¯Æğ
-//		WM_MBUTTONDBLCLK	ÖĞ¼üË«»÷
-//		WM_RBUTTONDOWN		ÓÒ¼ü°´ÏÂ
-//		WM_RBUTTONUP		ÓÒ¼üµ¯Æğ
-//		WM_RBUTTONDBLCLK	ÓÒ¼üË«»÷
+// é¼ æ ‡æ¶ˆæ¯
+// æ”¯æŒå¦‚ä¸‹æ¶ˆæ¯ï¼š
+//		WM_MOUSEMOVE		é¼ æ ‡ç§»åŠ¨
+//		WM_MOUSEWHEEL		é¼ æ ‡æ»šè½®æ‹¨åŠ¨
+//		WM_LBUTTONDOWN		å·¦é”®æŒ‰ä¸‹
+//		WM_LBUTTONUP		å·¦é”®å¼¹èµ·
+//		WM_LBUTTONDBLCLK	å·¦é”®åŒå‡»
+//		WM_MBUTTONDOWN		ä¸­é”®æŒ‰ä¸‹
+//		WM_MBUTTONUP		ä¸­é”®å¼¹èµ·
+//		WM_MBUTTONDBLCLK	ä¸­é”®åŒå‡»
+//		WM_RBUTTONDOWN		å³é”®æŒ‰ä¸‹
+//		WM_RBUTTONUP		å³é”®å¼¹èµ·
+//		WM_RBUTTONDBLCLK	å³é”®åŒå‡»
 struct EASYX_API MOUSEMSG
 {
-	UINT uMsg;				// µ±Ç°Êó±êÏûÏ¢
-	bool mkCtrl;			// Ctrl ¼üÊÇ·ñ°´ÏÂ
-	bool mkShift;			// Shift ¼üÊÇ·ñ°´ÏÂ
-	bool mkLButton;			// Êó±ê×ó¼üÊÇ·ñ°´ÏÂ
-	bool mkMButton;			// Êó±êÖĞ¼üÊÇ·ñ°´ÏÂ
-	bool mkRButton;			// Êó±êÓÒ¼üÊÇ·ñ°´ÏÂ
-	short x;				// µ±Ç°Êó±ê x ×ø±ê
-	short y;				// µ±Ç°Êó±ê y ×ø±ê
-	short wheel;			// Êó±ê¹öÂÖ¹ö¶¯Öµ (120 µÄ±¶Êı)
+	UINT uMsg;				// å½“å‰é¼ æ ‡æ¶ˆæ¯
+	bool mkCtrl;			// Ctrl é”®æ˜¯å¦æŒ‰ä¸‹
+	bool mkShift;			// Shift é”®æ˜¯å¦æŒ‰ä¸‹
+	bool mkLButton;			// é¼ æ ‡å·¦é”®æ˜¯å¦æŒ‰ä¸‹
+	bool mkMButton;			// é¼ æ ‡ä¸­é”®æ˜¯å¦æŒ‰ä¸‹
+	bool mkRButton;			// é¼ æ ‡å³é”®æ˜¯å¦æŒ‰ä¸‹
+	short x;				// å½“å‰é¼ æ ‡ x åæ ‡
+	short y;				// å½“å‰é¼ æ ‡ y åæ ‡
+	short wheel;			// é¼ æ ‡æ»šè½®æ»šåŠ¨å€¼ (120 çš„å€æ•°)
 };
 
 /// <summary>
-/// EasyX¶¯Ì¬¿âµ¼³öº¯Êı¿Õ¼ä
+/// EasyXåŠ¨æ€åº“å¯¼å‡ºå‡½æ•°ç©ºé—´
 /// </summary>
 namespace easyx
 {
 
 #ifndef EASYX_STALIB_COMPAT
-	// ÑÕÉ«
+	// é¢œè‰²
 	enum : DWORD
 	{
 		Black = 0
@@ -177,173 +177,173 @@ namespace easyx
 
 #endif
 
-	// »æÍ¼Ä£Ê½Ïà¹Øº¯Êı
+	// ç»˜å›¾æ¨¡å¼ç›¸å…³å‡½æ•°
 
-	EASYX_API HWND initgraph(int width, int height, int flag = 0);	// ³õÊ¼»¯Í¼ĞÎ»·¾³
-	EASYX_API void closegraph();										// ¹Ø±ÕÍ¼ĞÎ»·¾³
+	EASYX_API HWND initgraph(int width, int height, int flag = 0);	// åˆå§‹åŒ–å›¾å½¢ç¯å¢ƒ
+	EASYX_API void closegraph();										// å…³é—­å›¾å½¢ç¯å¢ƒ
 
-	// »æÍ¼»·¾³ÉèÖÃ
+	// ç»˜å›¾ç¯å¢ƒè®¾ç½®
 
-	EASYX_API void cleardevice();					// ÇåÆÁ
-	EASYX_API void setcliprgn(HRGN hrgn);			// ÉèÖÃµ±Ç°»æÍ¼Éè±¸µÄ²Ã¼ôÇø
-	EASYX_API void clearcliprgn();				// Çå³ı²Ã¼ôÇøµÄÆÁÄ»ÄÚÈİ
+	EASYX_API void cleardevice();					// æ¸…å±
+	EASYX_API void setcliprgn(HRGN hrgn);			// è®¾ç½®å½“å‰ç»˜å›¾è®¾å¤‡çš„è£å‰ªåŒº
+	EASYX_API void clearcliprgn();				// æ¸…é™¤è£å‰ªåŒºçš„å±å¹•å†…å®¹
 
-	EASYX_API void getlinestyle(LINESTYLE* pstyle);						// »ñÈ¡µ±Ç°»­ÏßÑùÊ½
-	EASYX_API void setlinestyle(const LINESTYLE* pstyle);					// ÉèÖÃµ±Ç°»­ÏßÑùÊ½
-	EASYX_API void setlinestyle(int style, int thickness = 1, const DWORD* puserstyle = nullptr, DWORD userstylecount = 0);	// ÉèÖÃµ±Ç°»­ÏßÑùÊ½
-	EASYX_API void getfillstyle(FILLSTYLE* pstyle);						// »ñÈ¡µ±Ç°Ìî³äÑùÊ½
-	EASYX_API void setfillstyle(const FILLSTYLE* pstyle);					// ÉèÖÃµ±Ç°Ìî³äÑùÊ½
-	EASYX_API void setfillstyle(int style, long hatch = 0, IMAGE* ppattern = nullptr);		// ÉèÖÃµ±Ç°Ìî³äÑùÊ½
-	EASYX_API void setfillstyle(BYTE* ppattern8x8);						// ÉèÖÃµ±Ç°Ìî³äÑùÊ½
+	EASYX_API void getlinestyle(LINESTYLE* pstyle);						// è·å–å½“å‰ç”»çº¿æ ·å¼
+	EASYX_API void setlinestyle(const LINESTYLE* pstyle);					// è®¾ç½®å½“å‰ç”»çº¿æ ·å¼
+	EASYX_API void setlinestyle(int style, int thickness = 1, const DWORD* puserstyle = nullptr, DWORD userstylecount = 0);	// è®¾ç½®å½“å‰ç”»çº¿æ ·å¼
+	EASYX_API void getfillstyle(FILLSTYLE* pstyle);						// è·å–å½“å‰å¡«å……æ ·å¼
+	EASYX_API void setfillstyle(const FILLSTYLE* pstyle);					// è®¾ç½®å½“å‰å¡«å……æ ·å¼
+	EASYX_API void setfillstyle(int style, long hatch = 0, IMAGE* ppattern = nullptr);		// è®¾ç½®å½“å‰å¡«å……æ ·å¼
+	EASYX_API void setfillstyle(BYTE* ppattern8x8);						// è®¾ç½®å½“å‰å¡«å……æ ·å¼
 
-	EASYX_API void setorigin(int x, int y);							// ÉèÖÃ×ø±êÔ­µã
-	EASYX_API void getaspectratio(float* pxasp, float* pyasp);		// »ñÈ¡µ±Ç°Ëõ·ÅÒò×Ó
-	EASYX_API void setaspectratio(float xasp, float yasp);			// ÉèÖÃµ±Ç°Ëõ·ÅÒò×Ó
+	EASYX_API void setorigin(int x, int y);							// è®¾ç½®åæ ‡åŸç‚¹
+	EASYX_API void getaspectratio(float* pxasp, float* pyasp);		// è·å–å½“å‰ç¼©æ”¾å› å­
+	EASYX_API void setaspectratio(float xasp, float yasp);			// è®¾ç½®å½“å‰ç¼©æ”¾å› å­
 
-	EASYX_API int getrop2();						// »ñÈ¡Ç°¾°µÄ¶şÔª¹âÕ¤²Ù×÷Ä£Ê½
-	EASYX_API void setrop2(int mode);				// ÉèÖÃÇ°¾°µÄ¶şÔª¹âÕ¤²Ù×÷Ä£Ê½
-	EASYX_API int getpolyfillmode();				// »ñÈ¡¶à±ßĞÎÌî³äÄ£Ê½
-	EASYX_API void setpolyfillmode(int mode);		// ÉèÖÃ¶à±ßĞÎÌî³äÄ£Ê½
+	EASYX_API int getrop2();						// è·å–å‰æ™¯çš„äºŒå…ƒå…‰æ …æ“ä½œæ¨¡å¼
+	EASYX_API void setrop2(int mode);				// è®¾ç½®å‰æ™¯çš„äºŒå…ƒå…‰æ …æ“ä½œæ¨¡å¼
+	EASYX_API int getpolyfillmode();				// è·å–å¤šè¾¹å½¢å¡«å……æ¨¡å¼
+	EASYX_API void setpolyfillmode(int mode);		// è®¾ç½®å¤šè¾¹å½¢å¡«å……æ¨¡å¼
 
-	EASYX_API void graphdefaults();				// ÖØÖÃËùÓĞ»æÍ¼ÉèÖÃÎªÄ¬ÈÏÖµ
+	EASYX_API void graphdefaults();				// é‡ç½®æ‰€æœ‰ç»˜å›¾è®¾ç½®ä¸ºé»˜è®¤å€¼
 
-	EASYX_API COLORREF getlinecolor();			// »ñÈ¡µ±Ç°ÏßÌõÑÕÉ«
-	EASYX_API void setlinecolor(COLORREF color);	// ÉèÖÃµ±Ç°ÏßÌõÑÕÉ«
-	EASYX_API COLORREF gettextcolor();			// »ñÈ¡µ±Ç°ÎÄ×ÖÑÕÉ«
-	EASYX_API void settextcolor(COLORREF color);	// ÉèÖÃµ±Ç°ÎÄ×ÖÑÕÉ«
-	EASYX_API COLORREF getfillcolor();			// »ñÈ¡µ±Ç°Ìî³äÑÕÉ«
-	EASYX_API void setfillcolor(COLORREF color);	// ÉèÖÃµ±Ç°Ìî³äÑÕÉ«
-	EASYX_API COLORREF getbkcolor();				// »ñÈ¡µ±Ç°»æÍ¼±³¾°É«
-	EASYX_API void setbkcolor(COLORREF color);	// ÉèÖÃµ±Ç°»æÍ¼±³¾°É«
-	EASYX_API int  getbkmode();					// »ñÈ¡±³¾°»ìºÏÄ£Ê½
-	EASYX_API void setbkmode(int mode);			// ÉèÖÃ±³¾°»ìºÏÄ£Ê½
+	EASYX_API COLORREF getlinecolor();			// è·å–å½“å‰çº¿æ¡é¢œè‰²
+	EASYX_API void setlinecolor(COLORREF color);	// è®¾ç½®å½“å‰çº¿æ¡é¢œè‰²
+	EASYX_API COLORREF gettextcolor();			// è·å–å½“å‰æ–‡å­—é¢œè‰²
+	EASYX_API void settextcolor(COLORREF color);	// è®¾ç½®å½“å‰æ–‡å­—é¢œè‰²
+	EASYX_API COLORREF getfillcolor();			// è·å–å½“å‰å¡«å……é¢œè‰²
+	EASYX_API void setfillcolor(COLORREF color);	// è®¾ç½®å½“å‰å¡«å……é¢œè‰²
+	EASYX_API COLORREF getbkcolor();				// è·å–å½“å‰ç»˜å›¾èƒŒæ™¯è‰²
+	EASYX_API void setbkcolor(COLORREF color);	// è®¾ç½®å½“å‰ç»˜å›¾èƒŒæ™¯è‰²
+	EASYX_API int  getbkmode();					// è·å–èƒŒæ™¯æ··åˆæ¨¡å¼
+	EASYX_API void setbkmode(int mode);			// è®¾ç½®èƒŒæ™¯æ··åˆæ¨¡å¼
 
-	// ÑÕÉ«Ä£ĞÍ×ª»»º¯Êı
+	// é¢œè‰²æ¨¡å‹è½¬æ¢å‡½æ•°
 	EASYX_API COLORREF RGBtoGRAY(COLORREF rgb);
 	EASYX_API void RGBtoHSL(COLORREF rgb, float* H, float* S, float* L);
 	EASYX_API void RGBtoHSV(COLORREF rgb, float* H, float* S, float* V);
 	EASYX_API COLORREF HSLtoRGB(float H, float S, float L);
 	EASYX_API COLORREF HSVtoRGB(float H, float S, float V);
 
-	// »æÍ¼º¯Êı
+	// ç»˜å›¾å‡½æ•°
 
-	EASYX_API COLORREF getpixel(int x, int y);				// »ñÈ¡µãµÄÑÕÉ«
-	EASYX_API void putpixel(int x, int y, COLORREF color);	// »­µã
+	EASYX_API COLORREF getpixel(int x, int y);				// è·å–ç‚¹çš„é¢œè‰²
+	EASYX_API void putpixel(int x, int y, COLORREF color);	// ç”»ç‚¹
 
-	EASYX_API void moveto(int x, int y);						// ÒÆ¶¯µ±Ç°µã(¾ø¶Ô×ø±ê)
-	EASYX_API void moverel(int dx, int dy);					// ÒÆ¶¯µ±Ç°µã(Ïà¶Ô×ø±ê)
+	EASYX_API void moveto(int x, int y);						// ç§»åŠ¨å½“å‰ç‚¹(ç»å¯¹åæ ‡)
+	EASYX_API void moverel(int dx, int dy);					// ç§»åŠ¨å½“å‰ç‚¹(ç›¸å¯¹åæ ‡)
 
-	EASYX_API void line(int x1, int y1, int x2, int y2);		// »­Ïß
-	EASYX_API void linerel(int dx, int dy);					// »­Ïß(ÖÁÏà¶Ô×ø±ê)
-	EASYX_API void lineto(int x, int y);						// »­Ïß(ÖÁ¾ø¶Ô×ø±ê)
+	EASYX_API void line(int x1, int y1, int x2, int y2);		// ç”»çº¿
+	EASYX_API void linerel(int dx, int dy);					// ç”»çº¿(è‡³ç›¸å¯¹åæ ‡)
+	EASYX_API void lineto(int x, int y);						// ç”»çº¿(è‡³ç»å¯¹åæ ‡)
 
-	EASYX_API void rectangle(int left, int top, int right, int bottom);	// »­¾ØĞÎ
-	EASYX_API void fillrectangle(int left, int top, int right, int bottom);	// »­Ìî³ä¾ØĞÎ(ÓĞ±ß¿ò)
-	EASYX_API void solidrectangle(int left, int top, int right, int bottom);	// »­Ìî³ä¾ØĞÎ(ÎŞ±ß¿ò)
-	EASYX_API void clearrectangle(int left, int top, int right, int bottom);	// Çå¿Õ¾ØĞÎÇøÓò
+	EASYX_API void rectangle(int left, int top, int right, int bottom);	// ç”»çŸ©å½¢
+	EASYX_API void fillrectangle(int left, int top, int right, int bottom);	// ç”»å¡«å……çŸ©å½¢(æœ‰è¾¹æ¡†)
+	EASYX_API void solidrectangle(int left, int top, int right, int bottom);	// ç”»å¡«å……çŸ©å½¢(æ— è¾¹æ¡†)
+	EASYX_API void clearrectangle(int left, int top, int right, int bottom);	// æ¸…ç©ºçŸ©å½¢åŒºåŸŸ
 
-	EASYX_API void circle(int x, int y, int radius);		// »­Ô²
-	EASYX_API void fillcircle(int x, int y, int radius);		// »­Ìî³äÔ²(ÓĞ±ß¿ò)
-	EASYX_API void solidcircle(int x, int y, int radius);		// »­Ìî³äÔ²(ÎŞ±ß¿ò)
-	EASYX_API void clearcircle(int x, int y, int radius);		// Çå¿ÕÔ²ĞÎÇøÓò
+	EASYX_API void circle(int x, int y, int radius);		// ç”»åœ†
+	EASYX_API void fillcircle(int x, int y, int radius);		// ç”»å¡«å……åœ†(æœ‰è¾¹æ¡†)
+	EASYX_API void solidcircle(int x, int y, int radius);		// ç”»å¡«å……åœ†(æ— è¾¹æ¡†)
+	EASYX_API void clearcircle(int x, int y, int radius);		// æ¸…ç©ºåœ†å½¢åŒºåŸŸ
 
-	EASYX_API void ellipse(int left, int top, int right, int bottom);	// »­ÍÖÔ²
-	EASYX_API void fillellipse(int left, int top, int right, int bottom);	// »­Ìî³äÍÖÔ²(ÓĞ±ß¿ò)
-	EASYX_API void solidellipse(int left, int top, int right, int bottom);	// »­Ìî³äÍÖÔ²(ÎŞ±ß¿ò)
-	EASYX_API void clearellipse(int left, int top, int right, int bottom);	// Çå¿ÕÍÖÔ²ĞÎÇøÓò
+	EASYX_API void ellipse(int left, int top, int right, int bottom);	// ç”»æ¤­åœ†
+	EASYX_API void fillellipse(int left, int top, int right, int bottom);	// ç”»å¡«å……æ¤­åœ†(æœ‰è¾¹æ¡†)
+	EASYX_API void solidellipse(int left, int top, int right, int bottom);	// ç”»å¡«å……æ¤­åœ†(æ— è¾¹æ¡†)
+	EASYX_API void clearellipse(int left, int top, int right, int bottom);	// æ¸…ç©ºæ¤­åœ†å½¢åŒºåŸŸ
 
-	EASYX_API void roundrect(int left, int top, int right, int bottom, int ellipsewidth, int ellipseheight);		// »­Ô²½Ç¾ØĞÎ
-	EASYX_API void fillroundrect(int left, int top, int right, int bottom, int ellipsewidth, int ellipseheight);		// »­Ìî³äÔ²½Ç¾ØĞÎ(ÓĞ±ß¿ò)
-	EASYX_API void solidroundrect(int left, int top, int right, int bottom, int ellipsewidth, int ellipseheight);		// »­Ìî³äÔ²½Ç¾ØĞÎ(ÎŞ±ß¿ò)
-	EASYX_API void clearroundrect(int left, int top, int right, int bottom, int ellipsewidth, int ellipseheight);		// Çå¿ÕÔ²½Ç¾ØĞÎÇøÓò
+	EASYX_API void roundrect(int left, int top, int right, int bottom, int ellipsewidth, int ellipseheight);		// ç”»åœ†è§’çŸ©å½¢
+	EASYX_API void fillroundrect(int left, int top, int right, int bottom, int ellipsewidth, int ellipseheight);		// ç”»å¡«å……åœ†è§’çŸ©å½¢(æœ‰è¾¹æ¡†)
+	EASYX_API void solidroundrect(int left, int top, int right, int bottom, int ellipsewidth, int ellipseheight);		// ç”»å¡«å……åœ†è§’çŸ©å½¢(æ— è¾¹æ¡†)
+	EASYX_API void clearroundrect(int left, int top, int right, int bottom, int ellipsewidth, int ellipseheight);		// æ¸…ç©ºåœ†è§’çŸ©å½¢åŒºåŸŸ
 
-	EASYX_API void arc(int left, int top, int right, int bottom, double stangle, double endangle);	// »­ÍÖÔ²»¡(ÆğÊ¼½Ç¶ÈºÍÖÕÖ¹½Ç¶ÈÎª»¡¶ÈÖÆ)
-	EASYX_API void pie(int left, int top, int right, int bottom, double stangle, double endangle);	// »­ÍÖÔ²ÉÈĞÎ(ÆğÊ¼½Ç¶ÈºÍÖÕÖ¹½Ç¶ÈÎª»¡¶ÈÖÆ)
-	EASYX_API void fillpie(int left, int top, int right, int bottom, double stangle, double endangle);	// »­Ìî³äÍÖÔ²ÉÈĞÎ(ÓĞ±ß¿ò)
-	EASYX_API void solidpie(int left, int top, int right, int bottom, double stangle, double endangle);	// »­Ìî³äÍÖÔ²ÉÈĞÎ(ÎŞ±ß¿ò)
-	EASYX_API void clearpie(int left, int top, int right, int bottom, double stangle, double endangle);	// Çå¿ÕÍÖÔ²ÉÈĞÎÇøÓò
+	EASYX_API void arc(int left, int top, int right, int bottom, double stangle, double endangle);	// ç”»æ¤­åœ†å¼§(èµ·å§‹è§’åº¦å’Œç»ˆæ­¢è§’åº¦ä¸ºå¼§åº¦åˆ¶)
+	EASYX_API void pie(int left, int top, int right, int bottom, double stangle, double endangle);	// ç”»æ¤­åœ†æ‰‡å½¢(èµ·å§‹è§’åº¦å’Œç»ˆæ­¢è§’åº¦ä¸ºå¼§åº¦åˆ¶)
+	EASYX_API void fillpie(int left, int top, int right, int bottom, double stangle, double endangle);	// ç”»å¡«å……æ¤­åœ†æ‰‡å½¢(æœ‰è¾¹æ¡†)
+	EASYX_API void solidpie(int left, int top, int right, int bottom, double stangle, double endangle);	// ç”»å¡«å……æ¤­åœ†æ‰‡å½¢(æ— è¾¹æ¡†)
+	EASYX_API void clearpie(int left, int top, int right, int bottom, double stangle, double endangle);	// æ¸…ç©ºæ¤­åœ†æ‰‡å½¢åŒºåŸŸ
 
-	EASYX_API void polyline(const POINT* points, int num);								// »­¶àÌõÁ¬ĞøµÄÏß
-	EASYX_API void polygon(const POINT* points, int num);								// »­¶à±ßĞÎ
-	EASYX_API void fillpolygon(const POINT* points, int num);								// »­Ìî³äµÄ¶à±ßĞÎ(ÓĞ±ß¿ò)
-	EASYX_API void solidpolygon(const POINT* points, int num);								// »­Ìî³äµÄ¶à±ßĞÎ(ÎŞ±ß¿ò)
-	EASYX_API void clearpolygon(const POINT* points, int num);								// Çå¿Õ¶à±ßĞÎÇøÓò
+	EASYX_API void polyline(const POINT* points, int num);								// ç”»å¤šæ¡è¿ç»­çš„çº¿
+	EASYX_API void polygon(const POINT* points, int num);								// ç”»å¤šè¾¹å½¢
+	EASYX_API void fillpolygon(const POINT* points, int num);								// ç”»å¡«å……çš„å¤šè¾¹å½¢(æœ‰è¾¹æ¡†)
+	EASYX_API void solidpolygon(const POINT* points, int num);								// ç”»å¡«å……çš„å¤šè¾¹å½¢(æ— è¾¹æ¡†)
+	EASYX_API void clearpolygon(const POINT* points, int num);								// æ¸…ç©ºå¤šè¾¹å½¢åŒºåŸŸ
 
-	EASYX_API void polybezier(const POINT* points, int num);									// »­±´Èû¶ûÇúÏß
-	EASYX_API void floodfill(int x, int y, COLORREF color, int filltype = FLOODFILLBORDER);	// Ìî³äÇøÓò
+	EASYX_API void polybezier(const POINT* points, int num);									// ç”»è´å¡å°”æ›²çº¿
+	EASYX_API void floodfill(int x, int y, COLORREF color, int filltype = FLOODFILLBORDER);	// å¡«å……åŒºåŸŸ
 
-	// ÎÄ×ÖÏà¹Øº¯Êı
+	// æ–‡å­—ç›¸å…³å‡½æ•°
 
-	EASYX_API void outtext(LPCTSTR str);					// ÔÚµ±Ç°Î»ÖÃÊä³ö×Ö·û´®
-	EASYX_API void outtext(TCHAR c);						// ÔÚµ±Ç°Î»ÖÃÊä³ö×Ö·û
-	EASYX_API void outtextxy(int x, int y, LPCTSTR str);	// ÔÚÖ¸¶¨Î»ÖÃÊä³ö×Ö·û´®
-	EASYX_API void outtextxy(int x, int y, TCHAR c);		// ÔÚÖ¸¶¨Î»ÖÃÊä³ö×Ö·û
-	EASYX_API int textwidth(LPCTSTR str);					// »ñÈ¡×Ö·û´®Õ¼ÓÃµÄÏñËØ¿í
-	EASYX_API int textwidth(TCHAR c);						// »ñÈ¡×Ö·ûÕ¼ÓÃµÄÏñËØ¿í
-	EASYX_API int textheight(LPCTSTR str);				// »ñÈ¡×Ö·û´®Õ¼ÓÃµÄÏñËØ¸ß
-	EASYX_API int textheight(TCHAR c);					// »ñÈ¡×Ö·ûÕ¼ÓÃµÄÏñËØ¸ß
-	EASYX_API int drawtext(LPCTSTR str, RECT* pRect, UINT uFormat);	// ÔÚÖ¸¶¨ÇøÓòÄÚÒÔÖ¸¶¨¸ñÊ½Êä³ö×Ö·û´®
-	EASYX_API int drawtext(TCHAR c, RECT* pRect, UINT uFormat);		// ÔÚÖ¸¶¨ÇøÓòÄÚÒÔÖ¸¶¨¸ñÊ½Êä³ö×Ö·û
+	EASYX_API void outtext(LPCTSTR str);					// åœ¨å½“å‰ä½ç½®è¾“å‡ºå­—ç¬¦ä¸²
+	EASYX_API void outtext(TCHAR c);						// åœ¨å½“å‰ä½ç½®è¾“å‡ºå­—ç¬¦
+	EASYX_API void outtextxy(int x, int y, LPCTSTR str);	// åœ¨æŒ‡å®šä½ç½®è¾“å‡ºå­—ç¬¦ä¸²
+	EASYX_API void outtextxy(int x, int y, TCHAR c);		// åœ¨æŒ‡å®šä½ç½®è¾“å‡ºå­—ç¬¦
+	EASYX_API int textwidth(LPCTSTR str);					// è·å–å­—ç¬¦ä¸²å ç”¨çš„åƒç´ å®½
+	EASYX_API int textwidth(TCHAR c);						// è·å–å­—ç¬¦å ç”¨çš„åƒç´ å®½
+	EASYX_API int textheight(LPCTSTR str);				// è·å–å­—ç¬¦ä¸²å ç”¨çš„åƒç´ é«˜
+	EASYX_API int textheight(TCHAR c);					// è·å–å­—ç¬¦å ç”¨çš„åƒç´ é«˜
+	EASYX_API int drawtext(LPCTSTR str, RECT* pRect, UINT uFormat);	// åœ¨æŒ‡å®šåŒºåŸŸå†…ä»¥æŒ‡å®šæ ¼å¼è¾“å‡ºå­—ç¬¦ä¸²
+	EASYX_API int drawtext(TCHAR c, RECT* pRect, UINT uFormat);		// åœ¨æŒ‡å®šåŒºåŸŸå†…ä»¥æŒ‡å®šæ ¼å¼è¾“å‡ºå­—ç¬¦
 
-	// ÉèÖÃµ±Ç°×ÖÌåÑùÊ½(Ïê¼û°ïÖú)
-	//		nHeight: ×Ö·ûµÄÆ½¾ù¸ß¶È£»
-	//		nWidth: ×Ö·ûµÄÆ½¾ù¿í¶È(0 ±íÊ¾×ÔÊÊÓ¦)£»
-	//		lpszFace: ×ÖÌåÃû³Æ£»
-	//		nEscapement: ×Ö·û´®µÄÊéĞ´½Ç¶È(µ¥Î» 0.1 ¶È)£»
-	//		nOrientation: Ã¿¸ö×Ö·ûµÄÊéĞ´½Ç¶È(µ¥Î» 0.1 ¶È)£»
-	//		nWeight: ×Ö·ûµÄ±Ê»­´ÖÏ¸(0 ±íÊ¾Ä¬ÈÏ´ÖÏ¸)£»
-	//		bItalic: ÊÇ·ñĞ±Ìå£»
-	//		bUnderline: ÊÇ·ñÏÂ»®Ïß£»
-	//		bStrikeOut: ÊÇ·ñÉ¾³ıÏß£»
-	//		fbCharSet: Ö¸¶¨×Ö·û¼¯£»
-	//		fbOutPrecision: Ö¸¶¨ÎÄ×ÖµÄÊä³ö¾«¶È£»
-	//		fbClipPrecision: Ö¸¶¨ÎÄ×ÖµÄ¼ô¼­¾«¶È£»
-	//		fbQuality: Ö¸¶¨ÎÄ×ÖµÄÊä³öÖÊÁ¿£»
-	//		fbPitchAndFamily: Ö¸¶¨ÒÔ³£¹æ·½Ê½ÃèÊö×ÖÌåµÄ×ÖÌåÏµÁĞ¡£
+	// è®¾ç½®å½“å‰å­—ä½“æ ·å¼(è¯¦è§å¸®åŠ©)
+	//		nHeight: å­—ç¬¦çš„å¹³å‡é«˜åº¦ï¼›
+	//		nWidth: å­—ç¬¦çš„å¹³å‡å®½åº¦(0 è¡¨ç¤ºè‡ªé€‚åº”)ï¼›
+	//		lpszFace: å­—ä½“åç§°ï¼›
+	//		nEscapement: å­—ç¬¦ä¸²çš„ä¹¦å†™è§’åº¦(å•ä½ 0.1 åº¦)ï¼›
+	//		nOrientation: æ¯ä¸ªå­—ç¬¦çš„ä¹¦å†™è§’åº¦(å•ä½ 0.1 åº¦)ï¼›
+	//		nWeight: å­—ç¬¦çš„ç¬”ç”»ç²—ç»†(0 è¡¨ç¤ºé»˜è®¤ç²—ç»†)ï¼›
+	//		bItalic: æ˜¯å¦æ–œä½“ï¼›
+	//		bUnderline: æ˜¯å¦ä¸‹åˆ’çº¿ï¼›
+	//		bStrikeOut: æ˜¯å¦åˆ é™¤çº¿ï¼›
+	//		fbCharSet: æŒ‡å®šå­—ç¬¦é›†ï¼›
+	//		fbOutPrecision: æŒ‡å®šæ–‡å­—çš„è¾“å‡ºç²¾åº¦ï¼›
+	//		fbClipPrecision: æŒ‡å®šæ–‡å­—çš„å‰ªè¾‘ç²¾åº¦ï¼›
+	//		fbQuality: æŒ‡å®šæ–‡å­—çš„è¾“å‡ºè´¨é‡ï¼›
+	//		fbPitchAndFamily: æŒ‡å®šä»¥å¸¸è§„æ–¹å¼æè¿°å­—ä½“çš„å­—ä½“ç³»åˆ—ã€‚
 	EASYX_API void settextstyle(int nHeight, int nWidth, LPCTSTR lpszFace);
 	EASYX_API void settextstyle(int nHeight, int nWidth, LPCTSTR lpszFace, int nEscapement, int nOrientation, int nWeight, bool bItalic, bool bUnderline, bool bStrikeOut);
 	EASYX_API void settextstyle(int nHeight, int nWidth, LPCTSTR lpszFace, int nEscapement, int nOrientation, int nWeight, bool bItalic, bool bUnderline, bool bStrikeOut, BYTE fbCharSet, BYTE fbOutPrecision, BYTE fbClipPrecision, BYTE fbQuality, BYTE fbPitchAndFamily);
-	EASYX_API void settextstyle(const LOGFONT* font);	// ÉèÖÃµ±Ç°×ÖÌåÑùÊ½
-	EASYX_API void gettextstyle(LOGFONT* font);		// »ñÈ¡µ±Ç°×ÖÌåÑùÊ½
+	EASYX_API void settextstyle(const LOGFONT* font);	// è®¾ç½®å½“å‰å­—ä½“æ ·å¼
+	EASYX_API void gettextstyle(LOGFONT* font);		// è·å–å½“å‰å­—ä½“æ ·å¼
 
-	// Í¼Ïñ´¦Àíº¯Êı
-	EASYX_API void loadimage(IMAGE* pDstImg, LPCTSTR pImgFile, int nWidth = 0, int nHeight = 0, bool bResize = false);					// ´ÓÍ¼Æ¬ÎÄ¼ş»ñÈ¡Í¼Ïñ(bmp/gif/jpg/png/tif/emf/wmf/ico)
-	EASYX_API void loadimage(IMAGE* pDstImg, LPCTSTR pResType, LPCTSTR pResName, int nWidth = 0, int nHeight = 0, bool bResize = false);	// ´Ó×ÊÔ´ÎÄ¼ş»ñÈ¡Í¼Ïñ(bmp/gif/jpg/png/tif/emf/wmf/ico)
-	EASYX_API void saveimage(LPCTSTR pImgFile, IMAGE* pImg = nullptr);																		// ±£´æÍ¼Ïñ(bmp/gif/jpg/png/tif)
-	EASYX_API void getimage(IMAGE* pDstImg, int srcX, int srcY, int srcWidth, int srcHeight);												// ´Óµ±Ç°»æÍ¼Éè±¸»ñÈ¡Í¼Ïñ
-	EASYX_API void putimage(int dstX, int dstY, const IMAGE* pSrcImg, DWORD dwRop = SRCCOPY);												// »æÖÆÍ¼Ïñµ½ÆÁÄ»
-	EASYX_API void putimage(int dstX, int dstY, int dstWidth, int dstHeight, const IMAGE* pSrcImg, int srcX, int srcY, DWORD dwRop = SRCCOPY);		// »æÖÆÍ¼Ïñµ½ÆÁÄ»(Ö¸¶¨¿í¸ß)
-	EASYX_API void rotateimage(IMAGE* dstimg, IMAGE* srcimg, double radian, COLORREF bkcolor = BLACK, bool autosize = false, bool highquality = true);// Ğı×ªÍ¼Ïñ
-	EASYX_API void Resize(IMAGE* pImg, int width, int height);	// µ÷Õû»æÍ¼Éè±¸µÄ´óĞ¡
-	EASYX_API DWORD* GetImageBuffer(IMAGE* pImg = nullptr);			// »ñÈ¡»æÍ¼Éè±¸µÄÏÔ´æÖ¸Õë
-	EASYX_API IMAGE* GetWorkingImage();							// »ñÈ¡µ±Ç°»æÍ¼Éè±¸
-	EASYX_API void SetWorkingImage(IMAGE* pImg = nullptr);			// ÉèÖÃµ±Ç°»æÍ¼Éè±¸
-	EASYX_API HDC GetImageHDC(IMAGE* pImg = nullptr);				// »ñÈ¡»æÍ¼Éè±¸¾ä±ú(HDC)
+	// å›¾åƒå¤„ç†å‡½æ•°
+	EASYX_API void loadimage(IMAGE* pDstImg, LPCTSTR pImgFile, int nWidth = 0, int nHeight = 0, bool bResize = false);					// ä»å›¾ç‰‡æ–‡ä»¶è·å–å›¾åƒ(bmp/gif/jpg/png/tif/emf/wmf/ico)
+	EASYX_API void loadimage(IMAGE* pDstImg, LPCTSTR pResType, LPCTSTR pResName, int nWidth = 0, int nHeight = 0, bool bResize = false);	// ä»èµ„æºæ–‡ä»¶è·å–å›¾åƒ(bmp/gif/jpg/png/tif/emf/wmf/ico)
+	EASYX_API void saveimage(LPCTSTR pImgFile, IMAGE* pImg = nullptr);																		// ä¿å­˜å›¾åƒ(bmp/gif/jpg/png/tif)
+	EASYX_API void getimage(IMAGE* pDstImg, int srcX, int srcY, int srcWidth, int srcHeight);												// ä»å½“å‰ç»˜å›¾è®¾å¤‡è·å–å›¾åƒ
+	EASYX_API void putimage(int dstX, int dstY, const IMAGE* pSrcImg, DWORD dwRop = SRCCOPY);												// ç»˜åˆ¶å›¾åƒåˆ°å±å¹•
+	EASYX_API void putimage(int dstX, int dstY, int dstWidth, int dstHeight, const IMAGE* pSrcImg, int srcX, int srcY, DWORD dwRop = SRCCOPY);		// ç»˜åˆ¶å›¾åƒåˆ°å±å¹•(æŒ‡å®šå®½é«˜)
+	EASYX_API void rotateimage(IMAGE* dstimg, IMAGE* srcimg, double radian, COLORREF bkcolor = BLACK, bool autosize = false, bool highquality = true);// æ—‹è½¬å›¾åƒ
+	EASYX_API void Resize(IMAGE* pImg, int width, int height);	// è°ƒæ•´ç»˜å›¾è®¾å¤‡çš„å¤§å°
+	EASYX_API DWORD* GetImageBuffer(IMAGE* pImg = nullptr);			// è·å–ç»˜å›¾è®¾å¤‡çš„æ˜¾å­˜æŒ‡é’ˆ
+	EASYX_API IMAGE* GetWorkingImage();							// è·å–å½“å‰ç»˜å›¾è®¾å¤‡
+	EASYX_API void SetWorkingImage(IMAGE* pImg = nullptr);			// è®¾ç½®å½“å‰ç»˜å›¾è®¾å¤‡
+	EASYX_API HDC GetImageHDC(IMAGE* pImg = nullptr);				// è·å–ç»˜å›¾è®¾å¤‡å¥æŸ„(HDC)
 
-	// ÆäËüº¯Êı
+	// å…¶å®ƒå‡½æ•°
 
-	EASYX_API int getwidth();			// »ñÈ¡»æÍ¼Çø¿í¶È
-	EASYX_API int getheight();		// »ñÈ¡»æÍ¼Çø¸ß¶È
-	EASYX_API int getx();				// »ñÈ¡µ±Ç° x ×ø±ê
-	EASYX_API int gety();				// »ñÈ¡µ±Ç° y ×ø±ê
+	EASYX_API int getwidth();			// è·å–ç»˜å›¾åŒºå®½åº¦
+	EASYX_API int getheight();		// è·å–ç»˜å›¾åŒºé«˜åº¦
+	EASYX_API int getx();				// è·å–å½“å‰ x åæ ‡
+	EASYX_API int gety();				// è·å–å½“å‰ y åæ ‡
 
-	EASYX_API void BeginBatchDraw();	// ¿ªÊ¼ÅúÁ¿»æÖÆ
-	EASYX_API void FlushBatchDraw();	// Ö´ĞĞÎ´Íê³ÉµÄ»æÖÆÈÎÎñ
-	EASYX_API void FlushBatchDraw(int left, int top, int right, int bottom);	// Ö´ĞĞÖ¸¶¨ÇøÓòÄÚÎ´Íê³ÉµÄ»æÖÆÈÎÎñ
-	EASYX_API void EndBatchDraw();	// ½áÊøÅúÁ¿»æÖÆ£¬²¢Ö´ĞĞÎ´Íê³ÉµÄ»æÖÆÈÎÎñ
-	EASYX_API void EndBatchDraw(int left, int top, int right, int bottom);	// ½áÊøÅúÁ¿»æÖÆ£¬²¢Ö´ĞĞÖ¸¶¨ÇøÓòÄÚÎ´Íê³ÉµÄ»æÖÆÈÎÎñ
+	EASYX_API void BeginBatchDraw();	// å¼€å§‹æ‰¹é‡ç»˜åˆ¶
+	EASYX_API void FlushBatchDraw();	// æ‰§è¡Œæœªå®Œæˆçš„ç»˜åˆ¶ä»»åŠ¡
+	EASYX_API void FlushBatchDraw(int left, int top, int right, int bottom);	// æ‰§è¡ŒæŒ‡å®šåŒºåŸŸå†…æœªå®Œæˆçš„ç»˜åˆ¶ä»»åŠ¡
+	EASYX_API void EndBatchDraw();	// ç»“æŸæ‰¹é‡ç»˜åˆ¶ï¼Œå¹¶æ‰§è¡Œæœªå®Œæˆçš„ç»˜åˆ¶ä»»åŠ¡
+	EASYX_API void EndBatchDraw(int left, int top, int right, int bottom);	// ç»“æŸæ‰¹é‡ç»˜åˆ¶ï¼Œå¹¶æ‰§è¡ŒæŒ‡å®šåŒºåŸŸå†…æœªå®Œæˆçš„ç»˜åˆ¶ä»»åŠ¡
 
-	EASYX_API HWND GetHWnd();								// »ñÈ¡»æÍ¼´°¿Ú¾ä±ú(HWND)
-	EASYX_API TCHAR* GetEasyXVer();						// »ñÈ¡ EasyX µ±Ç°°æ±¾
+	EASYX_API HWND GetHWnd();								// è·å–ç»˜å›¾çª—å£å¥æŸ„(HWND)
+	EASYX_API TCHAR* GetEasyXVer();						// è·å– EasyX å½“å‰ç‰ˆæœ¬
 
-	// »ñÈ¡ÓÃ»§ÊäÈë
+	// è·å–ç”¨æˆ·è¾“å…¥
 	EASYX_API bool InputBox(LPTSTR pString, int nMaxCount, LPCTSTR pPrompt = nullptr, LPCTSTR pTitle = nullptr, LPCTSTR pDefault = nullptr, int width = 0, int height = 0, bool bOnlyOK = true);
 
-	EASYX_API bool MouseHit();			// ¼ì²éÊÇ·ñ´æÔÚÊó±êÏûÏ¢
-	EASYX_API MOUSEMSG GetMouseMsg();		// »ñÈ¡Ò»¸öÊó±êÏûÏ¢¡£Èç¹ûÃ»ÓĞ£¬¾ÍµÈ´ı
-	EASYX_API void FlushMouseMsgBuffer();	// Çå¿ÕÊó±êÏûÏ¢»º³åÇø
+	EASYX_API bool MouseHit();			// æ£€æŸ¥æ˜¯å¦å­˜åœ¨é¼ æ ‡æ¶ˆæ¯
+	EASYX_API MOUSEMSG GetMouseMsg();		// è·å–ä¸€ä¸ªé¼ æ ‡æ¶ˆæ¯ã€‚å¦‚æœæ²¡æœ‰ï¼Œå°±ç­‰å¾…
+	EASYX_API void FlushMouseMsgBuffer();	// æ¸…ç©ºé¼ æ ‡æ¶ˆæ¯ç¼“å†²åŒº
 }
-// ´úÂë¼æÈİ
+// ä»£ç å…¼å®¹
 #ifdef EASYX_STALIB_COMPAT
 using namespace easyx;
 #endif // EASYX_STALIB_COMPAT
