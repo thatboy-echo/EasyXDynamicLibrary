@@ -13,7 +13,7 @@
 #error EasyX Dynamic Library is only for C++
 #endif
 
-#ifndef EASYX_EXPORTS
+#if !defined EASYX_EXPORTS && !defined _USRDLL
 #ifdef UNICODE
 #pragma comment(lib,"EasyXDw.lib")
 #else
